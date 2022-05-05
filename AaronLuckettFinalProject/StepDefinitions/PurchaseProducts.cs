@@ -17,7 +17,7 @@ using static AaronLuckettFinalProject.Utilities.Helper;
 namespace AaronLuckettFinalProject.StepDefinitions
 {
     [Binding]
-    public class PurcahsingProductsStepDefinitions: Hook
+    public class PurchasingProductsStepDefinitions: Hook
     {
         [Given(@"I have logged in")]
         public void GivenIHaveLoggedIn()
@@ -64,8 +64,11 @@ namespace AaronLuckettFinalProject.StepDefinitions
             CartNav cartNav = new CartNav(driver);
             //Get the corrosponding values
             Decimal Discount = cartNav.GetDiscountAmount();
+            Console.WriteLine(Discount.ToString());
             Decimal Before = cartNav.GetTotalBeforeDiscountAmount();
+            Console.WriteLine(Before.ToString());
             Decimal ExpectedDiscount = (Math.Round(Before * (Convert.ToDecimal(couponDiscount) / 100),2));
+            Console.WriteLine(ExpectedDiscount);
             Boolean res = (ExpectedDiscount == Discount);
 
             cartNav.ScrollIntoView();
@@ -151,7 +154,7 @@ namespace AaronLuckettFinalProject.StepDefinitions
             TakesScreenshot(driver as ITakesScreenshot, "OrderNumber2");
 
             //Compares the two order numbers
-            Assert.AreEqual(OrderNumber, OrderNumber2, "Expected " + OrderNumber + " to match " + " but order order number was " + OrderNumber2);
+            Assert.AreEqual(OrderNumber, OrderNumber2, "Expected " + OrderNumber + " to match " + "but other order number was " + OrderNumber2);
 
             order.Logout();
         }

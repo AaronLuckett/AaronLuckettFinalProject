@@ -1,7 +1,7 @@
 ﻿@Purchase
 Feature: Purchasing products
 
-As a user I want to be able apply coupons and check order numbers
+As a user I want to be able apply coupons and check the two order numbers
 
 Background:
 	Given I have logged in

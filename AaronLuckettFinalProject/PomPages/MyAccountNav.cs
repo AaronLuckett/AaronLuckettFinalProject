@@ -19,14 +19,16 @@ namespace AaronLuckettFinalProject.PomPages
             this.driver = driver;
         }
 
-
         //Locators
+        By logoutButtonLocator = By.LinkText("Logout");
+
+        //Elements
         IWebElement emailBox => driver.FindElement(By.Name("username"));
         IWebElement passwordBox => driver.FindElement(By.Name("password"));
         IWebElement shopButton => driver.FindElement(By.LinkText("Shop"));
         IWebElement loginButton => driver.FindElement(By.Name("login"));
         IWebElement Orders => driver.FindElement(By.LinkText("Orders"));
-        IWebElement LogoutButton => driver.FindElement(By.LinkText("Logout"));
+        IWebElement LogoutButton => driver.FindElement(logoutButtonLocator);
         IWebElement CartButton => driver.FindElement(By.LinkText("Cart"));
 
 
@@ -72,7 +74,7 @@ namespace AaronLuckettFinalProject.PomPages
         public void Logout()
         {
             //Will check for stale error and confirm button is still present
-            IWebElement logout = driver.FindElement(By.LinkText("Logout"));
+            IWebElement logout = driver.FindElement(logoutButtonLocator);
             try
             {
                 logout.Click();
@@ -80,7 +82,7 @@ namespace AaronLuckettFinalProject.PomPages
             catch (StaleElementReferenceException e)
             {
                 //If fails find button again and then click on it
-                logout = driver.FindElement(By.LinkText("Logout"));
+                logout = driver.FindElement(logoutButtonLocator);
                 LogoutButton.Click();
             }
         }

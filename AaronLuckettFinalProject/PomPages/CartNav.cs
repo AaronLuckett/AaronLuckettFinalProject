@@ -22,12 +22,14 @@ namespace AaronLuckettFinalProject.PomPages
             this.driver = driver;
         }
 
-        //Elements
+        //Locators
         By DiscountAMountLocator = By.CssSelector(".cart-discount.coupon-edgewords > td > .amount.woocommerce-Price-amount");
 
         By FinalAmountLocator = By.CssSelector("strong > .amount.woocommerce-Price-amount");
 
         By RemoveFromCartLocator = By.CssSelector(".remove");
+
+        //Elements
         IWebElement discount => driver.FindElement(DiscountAMountLocator);
         IWebElement final => driver.FindElement(FinalAmountLocator);
         IWebElement RemoveFromCart => driver.FindElement(RemoveFromCartLocator);
@@ -114,9 +116,13 @@ namespace AaronLuckettFinalProject.PomPages
             actions.Perform();
         }
 
+        /*
+         * Method to remove items from cart to get a clean slate
+         */
         public void RemoveAllFromCart()
         {
             List<IWebElement> elementList = new List<IWebElement>();
+            //Add to list if there is an item in the cart
             elementList.AddRange(driver.FindElements(RemoveFromCartLocator));
             if (elementList.Count > 0)
             {

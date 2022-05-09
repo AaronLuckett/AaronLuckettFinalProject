@@ -20,20 +20,25 @@ namespace AaronLuckettFinalProject.PomPages
             this.driver = driver;
         }
 
+        //Locators
+        By placeOrderLocator = By.CssSelector("button#place_order");
+        By orderNumberLocator = By.CssSelector(".order > strong");
+        By checkPaymentsLocator = By.CssSelector(".payment_method_cheque.wc_payment_method > label");
+
         //Elements
+        IWebElement PlaceOrder => driver.FindElement(placeOrderLocator);
+        IWebElement OrderNumber => driver.FindElement(orderNumberLocator);
+        IWebElement CheckPayments => driver.FindElement(checkPaymentsLocator);
         IWebElement FirstName => driver.FindElement(By.CssSelector("input#billing_first_name"));
         IWebElement SecondName => driver.FindElement(By.CssSelector("input#billing_last_name"));
         IWebElement StreetAddress => driver.FindElement(By.CssSelector("input[name='billing_address_1']"));
         IWebElement City => driver.FindElement(By.CssSelector("input#billing_city"));
         IWebElement Postcode => driver.FindElement(By.CssSelector("input#billing_postcode"));
         IWebElement PhoneNumber => driver.FindElement(By.CssSelector("input#billing_phone"));
-        IWebElement PlaceOrder => driver.FindElement(By.CssSelector("button#place_order"));
-        IWebElement OrderNumber => driver.FindElement(By.CssSelector(".order > strong"));
         IWebElement MyAccount => driver.FindElement(By.LinkText("My account"));
-        IWebElement CheckPayments => driver.FindElement(By.CssSelector(".payment_method_cheque.wc_payment_method > label"));
+
 
         //Methods
-
         /*
          * Method to enter all details
          */
@@ -121,7 +126,7 @@ namespace AaronLuckettFinalProject.PomPages
         public void EnterOrder()
         {
             //Will check for stale error and confirm button is still present
-            IWebElement Place = driver.FindElement(By.CssSelector("button#place_order"));
+            IWebElement Place = driver.FindElement(placeOrderLocator);
             try
             {
                 Place.Click();
@@ -129,7 +134,7 @@ namespace AaronLuckettFinalProject.PomPages
             catch (StaleElementReferenceException e)
             {
                 //If fails find button again and then click on it
-                Place = driver.FindElement(By.CssSelector("button#place_order"));
+                Place = driver.FindElement(placeOrderLocator);
                 PlaceOrder.Click();
             }
         }
@@ -140,7 +145,7 @@ namespace AaronLuckettFinalProject.PomPages
          */
         public int ReturnOrderNumber()
         {
-            WaitForElementToDisplay(By.CssSelector(".order > strong"), 10, driver);
+            WaitForElementToDisplay(orderNumberLocator, 10, driver);
             return Convert.ToInt32(OrderNumber.Text);
         }
 
@@ -159,7 +164,7 @@ namespace AaronLuckettFinalProject.PomPages
         public void ClickCheckPayments()
         {
             //Will check for stale error and confirm button is still present
-            IWebElement Check = driver.FindElement(By.XPath("//div[@id='payment']/ul//label[1]"));
+            IWebElement Check = driver.FindElement(checkPaymentsLocator);
             try
             {
                 Check.Click();
@@ -167,7 +172,7 @@ namespace AaronLuckettFinalProject.PomPages
             catch (StaleElementReferenceException e)
             {
                 //If fails find button again and then click on it
-                Check = driver.FindElement(By.XPath("//div[@id='payment']/ul//label[1]"));
+                Check = driver.FindElement(checkPaymentsLocator);
                 CheckPayments.Click();
             }
         }

@@ -22,11 +22,13 @@ namespace AaronLuckettFinalProject.PomPages
         }
 
 
-        //Locators/Elements
-        IWebElement beltButton => driver.FindElement(By.CssSelector(".has-post-thumbnail.instock.post-28.product.product-type-simple.product_cat-accessories.purchasable.sale.shipping-taxable.status-publish.type-product > .add_to_cart_button.ajax_add_to_cart.button.product_type_simple"));
-        
+        //Locators     
         By ViewCartLocator = By.LinkText("View cart");
+
+        //Elements
         IWebElement GoToCart => driver.FindElement(ViewCartLocator);
+        IWebElement beltButton => driver.FindElement(By.CssSelector(".has-post-thumbnail.instock.post-28.product.product-type-simple.product_cat-accessories.purchasable.sale.shipping-taxable.status-publish.type-product > .add_to_cart_button.ajax_add_to_cart.button.product_type_simple"));
+
 
 
         //Services and Methods

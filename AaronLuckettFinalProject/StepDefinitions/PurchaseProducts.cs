@@ -13,12 +13,23 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using static AaronLuckettFinalProject.Utilities.Helper;
+using static AaronLuckettFinalProject.Utilities.Hook;
 
 namespace AaronLuckettFinalProject.StepDefinitions
 {
     [Binding]
-    public class PurchasingProductsStepDefinitions: Hook
+    public class PurchasingProductsStepDefinitions
     {
+
+        IWebDriver driver;
+        private readonly ScenarioContext _scenarioContext;
+
+        public PurchasingProductsStepDefinitions(ScenarioContext scenarioContext)
+        {
+            _scenarioContext = scenarioContext;
+            this.driver = (IWebDriver)_scenarioContext["webdriver"];
+        }
+
         [Given(@"I have logged in")]
         public void GivenIHaveLoggedIn()
         {
@@ -46,14 +57,14 @@ namespace AaronLuckettFinalProject.StepDefinitions
 
 
         [When(@"I enter the coupon code '(.*)'")]
-        public void WhenIEnterTheCouponCode(string edgewords0)
+        public void WhenIEnterTheCouponCode(string couponName)
         {
             ShopNav shopNav = new ShopNav(driver);
             shopNav.GoToBasketAfterPurchase();
 
             //Enters coupon code
             CartNav cartNav = new CartNav(driver);
-            cartNav.enterCoupon(edgewords0);
+            cartNav.enterCoupon(couponName);
         }
 
 
@@ -64,11 +75,8 @@ namespace AaronLuckettFinalProject.StepDefinitions
             CartNav cartNav = new CartNav(driver);
             //Get the corrosponding values
             Decimal Discount = cartNav.GetDiscountAmount();
-            Console.WriteLine(Discount.ToString());
             Decimal Before = cartNav.GetTotalBeforeDiscountAmount();
-            Console.WriteLine(Before.ToString());
             Decimal ExpectedDiscount = (Math.Round(Before * (Convert.ToDecimal(couponDiscount) / 100),2));
-            Console.WriteLine(ExpectedDiscount);
             Boolean res = (ExpectedDiscount == Discount);
 
             cartNav.ScrollIntoView();
@@ -77,12 +85,6 @@ namespace AaronLuckettFinalProject.StepDefinitions
             TakesScreenshot(driver as ITakesScreenshot, "CouponCode");
 
             Assert.That(res, Is.True, "Expected a discount of £" + ExpectedDiscount + " but actual discount was £" + Discount);
-            
-
-            //Go to my account and logout
-            cartNav.ProceedToMyAccount();
-            MyAccountNav myAccountNav = new MyAccountNav(driver);
-            myAccountNav.Logout();
         }
 
 
@@ -102,11 +104,6 @@ namespace AaronLuckettFinalProject.StepDefinitions
             Boolean res = (Final == CalculatedFinal);
             Assert.That(res, Is.True, "Expected a final value of £" + CalculatedFinal + " but got a value of £" + Final);
             Console.WriteLine("Finished Test");
-
-            //Go to my account and logout
-            cartNav.ProceedToMyAccount();
-            MyAccountNav myAccountNav = new MyAccountNav(driver);
-            myAccountNav.Logout();
         }
 
 
@@ -155,8 +152,6 @@ namespace AaronLuckettFinalProject.StepDefinitions
 
             //Compares the two order numbers
             Assert.AreEqual(OrderNumber, OrderNumber2, "Expected " + OrderNumber + " to match " + "but other order number was " + OrderNumber2);
-
-            order.Logout();
         }
     }
 }

@@ -85,12 +85,6 @@ namespace AaronLuckettFinalProject.Features
 #line 8
  testRunner.And("I am on the main shop page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 9
- testRunner.When("I add an item to my cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 10
- testRunner.When("I enter the coupon code \'edgewords\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
         }
         
         [NUnit.Framework.TestAttribute()]
@@ -102,7 +96,7 @@ namespace AaronLuckettFinalProject.Features
                     "ApplyCoupon"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("ApplyCoupon", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 13
+#line 12
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -115,7 +109,13 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
+#line 13
+ testRunner.When("I add an item to my cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
 #line 14
+ testRunner.When("I enter the coupon code \'edgewords\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 15
  testRunner.Then("a discount of \'15\'% should be applied", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -131,7 +131,7 @@ this.FeatureBackground();
                     "CorrectDeduction"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("CorrectDeduction", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 17
+#line 18
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -144,8 +144,50 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
-#line 18
+#line 19
+ testRunner.When("I add an item to my cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 20
+ testRunner.When("I enter the coupon code \'edgewords\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 21
  testRunner.Then("The final cost should equal the item price minus the discount value", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("CheckOrderNumber")]
+        [NUnit.Framework.CategoryAttribute("Purchase")]
+        public void CheckOrderNumber()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "Purchase"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("CheckOrderNumber", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 24
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 6
+this.FeatureBackground();
+#line hidden
+#line 25
+ testRunner.When("I add an item to my cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 26
+ testRunner.When("I Complete the purchase by filling in my correct details", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 27
+ testRunner.Then("The order number recevied after purachse should match the order number in order h" +
+                        "istory", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

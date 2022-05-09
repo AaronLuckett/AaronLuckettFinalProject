@@ -23,11 +23,17 @@ namespace AaronLuckettFinalProject.PomPages
         }
 
         //Elements
+        By DiscountAMountLocator = By.CssSelector(".cart-discount.coupon-edgewords > td > .amount.woocommerce-Price-amount");
+
+        By FinalAmountLocator = By.CssSelector("strong > .amount.woocommerce-Price-amount");
+
+        By RemoveFromCartLocator = By.CssSelector(".remove");
+        IWebElement discount => driver.FindElement(DiscountAMountLocator);
+        IWebElement final => driver.FindElement(FinalAmountLocator);
+        IWebElement RemoveFromCart => driver.FindElement(RemoveFromCartLocator);
         IWebElement couponEntry => driver.FindElement(By.Id("coupon_code"));
-        IWebElement discount => driver.FindElement(By.CssSelector(".cart-discount.coupon-edgewords > td > .amount.woocommerce-Price-amount"));
         IWebElement totalAmount => driver.FindElement(By.CssSelector(".cart-subtotal > td > .amount.woocommerce-Price-amount"));
         IWebElement delivry => driver.FindElement(By.CssSelector(".shipping > td > .amount.woocommerce-Price-amount"));
-        IWebElement final => driver.FindElement(By.CssSelector("strong > .amount.woocommerce-Price-amount"));
         IWebElement couponEnter => driver.FindElement(By.Name("apply_coupon"));
         IWebElement proceedToCheckout => driver.FindElement(By.LinkText("Proceed to checkout"));
         IWebElement proceedToMyAccount => driver.FindElement(By.LinkText("My account"));
@@ -49,7 +55,7 @@ namespace AaronLuckettFinalProject.PomPages
          */
         public Decimal GetDiscountAmount()
         {
-            WaitForElementToDisplay(By.CssSelector(".cart-discount.coupon-edgewords > td > .amount.woocommerce-Price-amount"), 10, driver);
+            WaitForElementToDisplay(DiscountAMountLocator, 10, driver);
             return Convert.ToDecimal(discount.Text.TrimStart('£'));
         }
 
@@ -77,7 +83,7 @@ namespace AaronLuckettFinalProject.PomPages
          */
         public Decimal GetFinalAmount()
         {
-            WaitForElementToDisplay(By.CssSelector("strong > .amount.woocommerce-Price-amount"), 10, driver);
+            WaitForElementToDisplay(FinalAmountLocator, 10, driver);
             return Convert.ToDecimal(final.Text.TrimStart('£'));
         }
 
@@ -106,6 +112,16 @@ namespace AaronLuckettFinalProject.PomPages
             var actions = new Actions(driver);
             actions.MoveToElement(proceedToCheckout);
             actions.Perform();
+        }
+
+        public void RemoveAllFromCart()
+        {
+            List<IWebElement> elementList = new List<IWebElement>();
+            elementList.AddRange(driver.FindElements(RemoveFromCartLocator));
+            if (elementList.Count > 0)
+            {
+                RemoveFromCart.Click();
+            }
         }
     }
 }

@@ -27,6 +27,7 @@ namespace AaronLuckettFinalProject.PomPages
         IWebElement loginButton => driver.FindElement(By.Name("login"));
         IWebElement Orders => driver.FindElement(By.LinkText("Orders"));
         IWebElement LogoutButton => driver.FindElement(By.LinkText("Logout"));
+        IWebElement CartButton => driver.FindElement(By.LinkText("Cart"));
 
 
         //Methods
@@ -70,7 +71,26 @@ namespace AaronLuckettFinalProject.PomPages
          */
         public void Logout()
         {
-            LogoutButton.Click();
+            //Will check for stale error and confirm button is still present
+            IWebElement logout = driver.FindElement(By.LinkText("Logout"));
+            try
+            {
+                logout.Click();
+            }
+            catch (StaleElementReferenceException e)
+            {
+                //If fails find button again and then click on it
+                logout = driver.FindElement(By.LinkText("Logout"));
+                LogoutButton.Click();
+            }
+        }
+
+        /*
+         * Method to go to cart
+         */
+        public void GoToCart()
+        {
+            CartButton.Click();
         }
     }
 }

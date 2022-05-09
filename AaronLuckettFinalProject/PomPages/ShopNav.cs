@@ -24,7 +24,9 @@ namespace AaronLuckettFinalProject.PomPages
 
         //Locators/Elements
         IWebElement beltButton => driver.FindElement(By.CssSelector(".has-post-thumbnail.instock.post-28.product.product-type-simple.product_cat-accessories.purchasable.sale.shipping-taxable.status-publish.type-product > .add_to_cart_button.ajax_add_to_cart.button.product_type_simple"));
-        IWebElement GoToCart => driver.FindElement(By.LinkText("View cart"));
+        
+        By ViewCartLocator = By.LinkText("View cart");
+        IWebElement GoToCart => driver.FindElement(ViewCartLocator);
 
 
         //Services and Methods
@@ -34,9 +36,9 @@ namespace AaronLuckettFinalProject.PomPages
         public void AddBeltToCart()
         {
             //Moves to the element and clicks
-            Actions action = new Actions(driver);
-            action.MoveToElement(beltButton);
-            action.Perform();
+            //Actions action = new Actions(driver);
+            //action.MoveToElement(beltButton);
+            //action.Perform();
             beltButton.Click();
         }
 
@@ -46,7 +48,7 @@ namespace AaronLuckettFinalProject.PomPages
          */
         public void GoToBasketAfterPurchase()
         {
-            WaitForElementToDisplay(By.LinkText("View cart"), 10, driver);
+            WaitForElementToDisplay(ViewCartLocator, 10, driver);
             GoToCart.Click();
         }
     }

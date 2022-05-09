@@ -12,8 +12,10 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
+using System.Data;
 using static AaronLuckettFinalProject.Utilities.Helper;
 using static AaronLuckettFinalProject.Utilities.Hook;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace AaronLuckettFinalProject.StepDefinitions
 {
@@ -23,11 +25,13 @@ namespace AaronLuckettFinalProject.StepDefinitions
 
         IWebDriver driver;
         private readonly ScenarioContext _scenarioContext;
+        private readonly CustomerData _customerData;
 
-        public PurchasingProductsStepDefinitions(ScenarioContext scenarioContext)
+        public PurchasingProductsStepDefinitions(ScenarioContext scenarioContext, CustomerData customerData)
         {
             _scenarioContext = scenarioContext;
             this.driver = (IWebDriver)_scenarioContext["webdriver"];
+            this._customerData = customerData;
         }
 
         [Given(@"I have logged in")]
@@ -119,11 +123,10 @@ namespace AaronLuckettFinalProject.StepDefinitions
 
             //Goes to the checkout page
             CheckoutNav checkout = new CheckoutNav(driver);
-            
+
             //Enter user details
-            checkout.EnterUserDetails(Environment.GetEnvironmentVariable("First_Name"), Environment.GetEnvironmentVariable("Second_Name"),
-                Environment.GetEnvironmentVariable("Address"), Environment.GetEnvironmentVariable("City"),
-                Environment.GetEnvironmentVariable("Postcode"), Environment.GetEnvironmentVariable("Phone_Number"));
+            checkout.EnterUserDetails(_customerData.firstName, _customerData.lastName,
+                _customerData.address, _customerData.city, _customerData.postcode, _customerData.phoneNumber);
 
             //Click check payments and enter order
             checkout.ClickCheckPayments();

@@ -5,12 +5,6 @@
 			<SECRET_USERNAME>aaron.luckett@nfocus.co.uk</SECRET_USERNAME>
 			<SECRET_PASSWORD>135Password135</SECRET_PASSWORD>
 			<Website_URL>https://www.edgewordstraining.co.uk/demo-site/my-account/</Website_URL>
-			<First_Name>Aaron</First_Name>
-			<Second_Name>Luckett</Second_Name>
-			<Address>55 Westbridge Street</Address>
-			<Postcode>DE22 3GG</Postcode>
-			<City>Derby</City>
-			<Phone_Number>07950 899 888</Phone_Number>
 		</EnvironmentVariables>
 	</RunConfiguration>
 </RunSettings>

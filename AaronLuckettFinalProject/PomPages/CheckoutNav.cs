@@ -26,16 +26,16 @@ namespace AaronLuckettFinalProject.PomPages
         By checkPaymentsLocator = By.CssSelector(".payment_method_cheque.wc_payment_method > label");
 
         //Elements
-        IWebElement PlaceOrder => driver.FindElement(placeOrderLocator);
-        IWebElement OrderNumber => driver.FindElement(orderNumberLocator);
-        IWebElement CheckPayments => driver.FindElement(checkPaymentsLocator);
-        IWebElement FirstName => driver.FindElement(By.CssSelector("input#billing_first_name"));
-        IWebElement SecondName => driver.FindElement(By.CssSelector("input#billing_last_name"));
-        IWebElement StreetAddress => driver.FindElement(By.CssSelector("input[name='billing_address_1']"));
-        IWebElement City => driver.FindElement(By.CssSelector("input#billing_city"));
-        IWebElement Postcode => driver.FindElement(By.CssSelector("input#billing_postcode"));
-        IWebElement PhoneNumber => driver.FindElement(By.CssSelector("input#billing_phone"));
-        IWebElement MyAccount => driver.FindElement(By.LinkText("My account"));
+        IWebElement placeOrder => driver.FindElement(placeOrderLocator);
+        IWebElement orderNumber => driver.FindElement(orderNumberLocator);
+        IWebElement checkPayments => driver.FindElement(checkPaymentsLocator);
+        IWebElement firstName => driver.FindElement(By.CssSelector("input#billing_first_name"));
+        IWebElement secondName => driver.FindElement(By.CssSelector("input#billing_last_name"));
+        IWebElement streetAddress => driver.FindElement(By.CssSelector("input[name='billing_address_1']"));
+        IWebElement city => driver.FindElement(By.CssSelector("input#billing_city"));
+        IWebElement postcode => driver.FindElement(By.CssSelector("input#billing_postcode"));
+        IWebElement phoneNumber => driver.FindElement(By.CssSelector("input#billing_phone"));
+        IWebElement myAccount => driver.FindElement(By.LinkText("My account"));
 
 
         //Methods
@@ -58,12 +58,12 @@ namespace AaronLuckettFinalProject.PomPages
          */
         private void ClearPreFilledFields()
         {
-            FirstName.Clear();
-            SecondName.Clear();
-            StreetAddress.Clear();
-            City.Clear();
-            Postcode.Clear();
-            PhoneNumber.Clear();
+            firstName.Clear();
+            secondName.Clear();
+            streetAddress.Clear();
+            city.Clear();
+            postcode.Clear();
+            phoneNumber.Clear();
         }
 
         /*
@@ -71,7 +71,7 @@ namespace AaronLuckettFinalProject.PomPages
          */
         public void EnterFirstName(String name)
         {
-            FirstName.SendKeys(name);
+            firstName.SendKeys(name);
         }
 
 
@@ -80,7 +80,7 @@ namespace AaronLuckettFinalProject.PomPages
          */
         public void EnterSecondName(String name)
         {
-            SecondName.SendKeys(name);
+            secondName.SendKeys(name);
         }
 
 
@@ -89,25 +89,25 @@ namespace AaronLuckettFinalProject.PomPages
          */
         public void EnterAddress(String address)
         {
-            StreetAddress.SendKeys(address);
+            streetAddress.SendKeys(address);
         }
 
 
         /*
          * Method to enter city
          */
-        public void EnterCity(String city)
+        public void EnterCity(String cityEntered)
         {
-            City.SendKeys(city);
+            city.SendKeys(cityEntered);
         }
 
 
         /*
          * Method to enter postcode
          */
-        public void EnterPostCode(String postcode)
+        public void EnterPostCode(String postcodeEntered)
         {
-            Postcode.SendKeys(postcode);
+            postcode.SendKeys(postcodeEntered);
         }
 
 
@@ -116,7 +116,7 @@ namespace AaronLuckettFinalProject.PomPages
          */
         public void EnterPhoneNumber(String phonenumber)
         {
-            PhoneNumber.SendKeys(phonenumber);
+            phoneNumber.SendKeys(phonenumber);
         }
 
 
@@ -135,7 +135,7 @@ namespace AaronLuckettFinalProject.PomPages
             {
                 //If fails find button again and then click on it
                 Place = driver.FindElement(placeOrderLocator);
-                PlaceOrder.Click();
+                placeOrder.Click();
             }
         }
 
@@ -146,7 +146,7 @@ namespace AaronLuckettFinalProject.PomPages
         public int ReturnOrderNumber()
         {
             WaitForElementToDisplay(orderNumberLocator, 10, driver);
-            return Convert.ToInt32(OrderNumber.Text);
+            return Convert.ToInt32(orderNumber.Text);
         }
 
 
@@ -155,7 +155,7 @@ namespace AaronLuckettFinalProject.PomPages
          */
         public void GoToMyAccount()
         {
-            MyAccount.Click();
+            myAccount.Click();
         }
 
         /*
@@ -173,7 +173,7 @@ namespace AaronLuckettFinalProject.PomPages
             {
                 //If fails find button again and then click on it
                 Check = driver.FindElement(checkPaymentsLocator);
-                CheckPayments.Click();
+                checkPayments.Click();
             }
         }
 

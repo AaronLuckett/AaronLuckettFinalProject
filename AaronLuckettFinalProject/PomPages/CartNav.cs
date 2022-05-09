@@ -23,16 +23,16 @@ namespace AaronLuckettFinalProject.PomPages
         }
 
         //Locators
-        By DiscountAMountLocator = By.CssSelector(".cart-discount.coupon-edgewords > td > .amount.woocommerce-Price-amount");
+        By discountAmountLocator = By.CssSelector(".cart-discount.coupon-edgewords > td > .amount.woocommerce-Price-amount");
 
-        By FinalAmountLocator = By.CssSelector("strong > .amount.woocommerce-Price-amount");
+        By finalAmountLocator = By.CssSelector("strong > .amount.woocommerce-Price-amount");
 
-        By RemoveFromCartLocator = By.CssSelector(".remove");
+        By removeFromCartLocator = By.CssSelector(".remove");
 
         //Elements
-        IWebElement discount => driver.FindElement(DiscountAMountLocator);
-        IWebElement final => driver.FindElement(FinalAmountLocator);
-        IWebElement RemoveFromCart => driver.FindElement(RemoveFromCartLocator);
+        IWebElement discount => driver.FindElement(discountAmountLocator);
+        IWebElement final => driver.FindElement(finalAmountLocator);
+        IWebElement removeFromCart => driver.FindElement(removeFromCartLocator);
         IWebElement couponEntry => driver.FindElement(By.Id("coupon_code"));
         IWebElement totalAmount => driver.FindElement(By.CssSelector(".cart-subtotal > td > .amount.woocommerce-Price-amount"));
         IWebElement delivry => driver.FindElement(By.CssSelector(".shipping > td > .amount.woocommerce-Price-amount"));
@@ -45,7 +45,7 @@ namespace AaronLuckettFinalProject.PomPages
         /*
          * Method to enter coupon code
          */
-        public void enterCoupon(String couponCode)
+        public void EnterCoupon(String couponCode)
         {
             couponEntry.SendKeys(couponCode);
             couponEnter.Click();
@@ -57,7 +57,7 @@ namespace AaronLuckettFinalProject.PomPages
          */
         public Decimal GetDiscountAmount()
         {
-            WaitForElementToDisplay(DiscountAMountLocator, 10, driver);
+            WaitForElementToDisplay(discountAmountLocator, 10, driver);
             return Convert.ToDecimal(discount.Text.TrimStart('£'));
         }
 
@@ -85,7 +85,7 @@ namespace AaronLuckettFinalProject.PomPages
          */
         public Decimal GetFinalAmount()
         {
-            WaitForElementToDisplay(FinalAmountLocator, 10, driver);
+            WaitForElementToDisplay(finalAmountLocator, 10, driver);
             return Convert.ToDecimal(final.Text.TrimStart('£'));
         }
 
@@ -123,10 +123,10 @@ namespace AaronLuckettFinalProject.PomPages
         {
             List<IWebElement> elementList = new List<IWebElement>();
             //Add to list if there is an item in the cart
-            elementList.AddRange(driver.FindElements(RemoveFromCartLocator));
+            elementList.AddRange(driver.FindElements(removeFromCartLocator));
             if (elementList.Count > 0)
             {
-                RemoveFromCart.Click();
+                removeFromCart.Click();
             }
         }
     }

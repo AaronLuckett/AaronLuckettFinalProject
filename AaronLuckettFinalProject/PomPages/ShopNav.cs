@@ -23,10 +23,10 @@ namespace AaronLuckettFinalProject.PomPages
 
 
         //Locators     
-        By ViewCartLocator = By.LinkText("View cart");
+        By viewCartLocator = By.LinkText("View cart");
 
         //Elements
-        IWebElement GoToCart => driver.FindElement(ViewCartLocator);
+        IWebElement goToCart => driver.FindElement(viewCartLocator);
         IWebElement beltButton => driver.FindElement(By.CssSelector(".has-post-thumbnail.instock.post-28.product.product-type-simple.product_cat-accessories.purchasable.sale.shipping-taxable.status-publish.type-product > .add_to_cart_button.ajax_add_to_cart.button.product_type_simple"));
 
 
@@ -50,8 +50,8 @@ namespace AaronLuckettFinalProject.PomPages
          */
         public void GoToBasketAfterPurchase()
         {
-            WaitForElementToDisplay(ViewCartLocator, 10, driver);
-            GoToCart.Click();
+            WaitForElementToDisplay(viewCartLocator, 10, driver);
+            goToCart.Click();
         }
     }
 }

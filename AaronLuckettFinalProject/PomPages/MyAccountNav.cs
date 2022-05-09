@@ -27,9 +27,9 @@ namespace AaronLuckettFinalProject.PomPages
         IWebElement passwordBox => driver.FindElement(By.Name("password"));
         IWebElement shopButton => driver.FindElement(By.LinkText("Shop"));
         IWebElement loginButton => driver.FindElement(By.Name("login"));
-        IWebElement Orders => driver.FindElement(By.LinkText("Orders"));
-        IWebElement LogoutButton => driver.FindElement(logoutButtonLocator);
-        IWebElement CartButton => driver.FindElement(By.LinkText("Cart"));
+        IWebElement orders => driver.FindElement(By.LinkText("Orders"));
+        IWebElement logoutButton => driver.FindElement(logoutButtonLocator);
+        IWebElement cartButton => driver.FindElement(By.LinkText("Cart"));
 
 
         //Methods
@@ -65,7 +65,7 @@ namespace AaronLuckettFinalProject.PomPages
          */
         public void GoToOrders()
         {
-            Orders.Click();
+            orders.Click();
         }
 
         /*
@@ -83,7 +83,7 @@ namespace AaronLuckettFinalProject.PomPages
             {
                 //If fails find button again and then click on it
                 logout = driver.FindElement(logoutButtonLocator);
-                LogoutButton.Click();
+                logoutButton.Click();
             }
         }
 
@@ -92,7 +92,7 @@ namespace AaronLuckettFinalProject.PomPages
          */
         public void GoToCart()
         {
-            CartButton.Click();
+            cartButton.Click();
         }
     }
 }

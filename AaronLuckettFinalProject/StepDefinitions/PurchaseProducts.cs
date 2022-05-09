@@ -68,7 +68,7 @@ namespace AaronLuckettFinalProject.StepDefinitions
 
             //Enters coupon code
             CartNav cartNav = new CartNav(driver);
-            cartNav.enterCoupon(couponName);
+            cartNav.EnterCoupon(couponName);
         }
 
 
@@ -78,17 +78,17 @@ namespace AaronLuckettFinalProject.StepDefinitions
             //First checks whether the correct discount from the coupon has been calculated
             CartNav cartNav = new CartNav(driver);
             //Get the corrosponding values
-            Decimal Discount = cartNav.GetDiscountAmount();
-            Decimal Before = cartNav.GetTotalBeforeDiscountAmount();
-            Decimal ExpectedDiscount = (Math.Round(Before * (Convert.ToDecimal(couponDiscount) / 100),2));
-            Boolean res = (ExpectedDiscount == Discount);
+            Decimal discount = cartNav.GetDiscountAmount();
+            Decimal before = cartNav.GetTotalBeforeDiscountAmount();
+            Decimal expectedDiscount = (Math.Round(before * (Convert.ToDecimal(couponDiscount) / 100),2));
+            Boolean res = (expectedDiscount == discount);
 
             cartNav.ScrollIntoView();
 
             //Take Screenshot
             TakesScreenshot(driver as ITakesScreenshot, "CouponCode");
 
-            Assert.That(res, Is.True, "Expected a discount of £" + ExpectedDiscount + " but actual discount was £" + Discount);
+            Assert.That(res, Is.True, "Expected a discount of £" + expectedDiscount + " but actual discount was £" + discount);
         }
 
 
@@ -99,14 +99,14 @@ namespace AaronLuckettFinalProject.StepDefinitions
 
             //Then will check if that discount has been correctly
             //Gets the related values
-            Decimal Delivery = cartNav.GetDeliverytAmount();
-            Decimal Discount = cartNav.GetDiscountAmount();
-            Decimal Before = cartNav.GetTotalBeforeDiscountAmount();
-            Decimal Final = cartNav.GetFinalAmount();
-            Decimal CalculatedFinal = (Delivery + (Before - Discount));
+            Decimal delivery = cartNav.GetDeliverytAmount();
+            Decimal discount = cartNav.GetDiscountAmount();
+            Decimal before = cartNav.GetTotalBeforeDiscountAmount();
+            Decimal final = cartNav.GetFinalAmount();
+            Decimal calculatedFinal = (delivery + (before - discount));
 
-            Boolean res = (Final == CalculatedFinal);
-            Assert.That(res, Is.True, "Expected a final value of £" + CalculatedFinal + " but got a value of £" + Final);
+            Boolean res = (final == calculatedFinal);
+            Assert.That(res, Is.True, "Expected a final value of £" + calculatedFinal + " but got a value of £" + final);
             Console.WriteLine("Finished Test");
         }
 
@@ -138,7 +138,7 @@ namespace AaronLuckettFinalProject.StepDefinitions
         public void ThenTheOrderNumberReceviedAfterPurachseShouldMatchTheOrderNumberInOrderHistory()
         {
             CheckoutNav checkout = new CheckoutNav(driver);
-            int OrderNumber = checkout.ReturnOrderNumber();
+            int orderNumber = checkout.ReturnOrderNumber();
             //Take Screenshot
             TakesScreenshot(driver as ITakesScreenshot, "OrderNumberOne");
             checkout.GoToMyAccount();
@@ -149,12 +149,12 @@ namespace AaronLuckettFinalProject.StepDefinitions
 
             //Goes to the orders page and gets the order number
             OrdersNav order = new OrdersNav(driver);
-            int OrderNumber2 = order.GetOrderNumber();
+            int orderNumber2 = order.GetOrderNumber();
             //Take Screenshot
             TakesScreenshot(driver as ITakesScreenshot, "OrderNumberTwo");
 
             //Compares the two order numbers
-            Assert.AreEqual(OrderNumber, OrderNumber2, "Expected " + OrderNumber + " to match " + "but other order number was " + OrderNumber2);
+            Assert.AreEqual(orderNumber, orderNumber2, "Expected " + orderNumber + " to match " + "but other order number was " + orderNumber2);
         }
     }
 }

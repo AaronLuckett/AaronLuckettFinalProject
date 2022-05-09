@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.VisualBasic;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
@@ -26,9 +28,12 @@ namespace AaronLuckettFinalProject.Utilities
          */
         public static void TakesScreenshot(ITakesScreenshot ssdriver, String ScreenshotName)
         {
+            String dt = (DateTime.Today.ToString("yyyyMMdd"));
+
             Screenshot screenshot = ssdriver.GetScreenshot();
+            Console.WriteLine(Environment.CurrentDirectory);
             screenshot.SaveAsFile("C:\\Users\\AaronLuckett\\Source\\Repos\\AaronLuckettFinalProject\\AaronLuckettFinalProject\\Screenshots\\"
-                + ScreenshotName + ".png", ScreenshotImageFormat.Png);
+                + ScreenshotName + dt + ".png", ScreenshotImageFormat.Png);
 
 
         }

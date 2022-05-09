@@ -137,7 +137,7 @@ namespace AaronLuckettFinalProject.StepDefinitions
             CheckoutNav checkout = new CheckoutNav(driver);
             int OrderNumber = checkout.ReturnOrderNumber();
             //Take Screenshot
-            TakesScreenshot(driver as ITakesScreenshot, "OrderNumber1");
+            TakesScreenshot(driver as ITakesScreenshot, "OrderNumberOne");
             checkout.GoToMyAccount();
 
             //Goes back to my account
@@ -148,7 +148,7 @@ namespace AaronLuckettFinalProject.StepDefinitions
             OrdersNav order = new OrdersNav(driver);
             int OrderNumber2 = order.GetOrderNumber();
             //Take Screenshot
-            TakesScreenshot(driver as ITakesScreenshot, "OrderNumber2");
+            TakesScreenshot(driver as ITakesScreenshot, "OrderNumberTwo");
 
             //Compares the two order numbers
             Assert.AreEqual(OrderNumber, OrderNumber2, "Expected " + OrderNumber + " to match " + "but other order number was " + OrderNumber2);

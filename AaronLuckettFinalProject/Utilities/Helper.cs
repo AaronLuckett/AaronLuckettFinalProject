@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualBasic;
@@ -31,9 +32,10 @@ namespace AaronLuckettFinalProject.Utilities
             String dt = (DateTime.Today.ToString("yyyyMMdd"));
 
             Screenshot screenshot = ssdriver.GetScreenshot();
-            Console.WriteLine(Environment.CurrentDirectory);
-            screenshot.SaveAsFile("C:\\Users\\AaronLuckett\\Source\\Repos\\AaronLuckettFinalProject\\AaronLuckettFinalProject\\Screenshots\\"
-                + ScreenshotName + dt + ".png", ScreenshotImageFormat.Png);
+            //Works out the relative path of project and saves in the screenshot folder
+            string workingDirectory = Environment.CurrentDirectory;
+            string relativePath = (Directory.GetParent(workingDirectory).Parent.Parent.FullName);
+            screenshot.SaveAsFile(relativePath + "\\Screenshots\\" + ScreenshotName + dt + ".png", ScreenshotImageFormat.Png);
 
 
         }

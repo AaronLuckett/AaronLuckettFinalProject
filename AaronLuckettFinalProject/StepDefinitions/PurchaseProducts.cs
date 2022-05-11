@@ -16,6 +16,7 @@ using System.Data;
 using static AaronLuckettFinalProject.Utilities.Helper;
 using static AaronLuckettFinalProject.Utilities.Hook;
 using Microsoft.EntityFrameworkCore.Metadata;
+using TechTalk.SpecFlow.Assist;
 
 namespace AaronLuckettFinalProject.StepDefinitions
 {
@@ -25,7 +26,7 @@ namespace AaronLuckettFinalProject.StepDefinitions
 
         IWebDriver driver;
         private readonly ScenarioContext _scenarioContext;
-        private readonly CustomerData _customerData;
+        private CustomerData _customerData;
 
         public PurchasingProductsStepDefinitions(ScenarioContext scenarioContext, CustomerData customerData)
         {
@@ -116,8 +117,8 @@ namespace AaronLuckettFinalProject.StepDefinitions
         }
 
 
-        [When(@"I Complete the purchase by filling in my correct details")]
-        public void GivenCompleteThePurchaseByFillingInMyCorrectDetails()
+        [When(@"I Complete the purchase by entering these details")]
+        public void GivenCompleteThePurchaseByFillingInMyCorrectDetails(Table customerDetailsTable)
         {
             //Adds item to cart and goes to basket
             ShopNav shopNav = new ShopNav(driver);
@@ -130,6 +131,7 @@ namespace AaronLuckettFinalProject.StepDefinitions
             CheckoutNav checkout = new CheckoutNav(driver);
 
             //Enter user details
+            _customerData = customerDetailsTable.CreateInstance<CustomerData>();
             checkout.EnterUserDetails(_customerData.firstName, _customerData.lastName,
                 _customerData.address, _customerData.city, _customerData.postcode, _customerData.phoneNumber);
             Console.WriteLine("Customer details entered");

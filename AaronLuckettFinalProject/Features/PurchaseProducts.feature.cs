@@ -182,10 +182,24 @@ this.FeatureBackground();
 #line 25
  testRunner.When("I add an item to my cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
+                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                            "firstname",
+                            "lastname",
+                            "address",
+                            "city",
+                            "postcode",
+                            "phoneNumber"});
+                table1.AddRow(new string[] {
+                            "Aaron",
+                            "Luckett",
+                            "65 Westbridge Street",
+                            "Derby",
+                            "DE22 3GG",
+                            "07950 888 888"});
 #line 26
- testRunner.When("I Complete the purchase by filling in my correct details", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I Complete the purchase by entering these details", ((string)(null)), table1, "When ");
 #line hidden
-#line 27
+#line 29
  testRunner.Then("The order number recevied after purachse should match the order number in order h" +
                         "istory", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden

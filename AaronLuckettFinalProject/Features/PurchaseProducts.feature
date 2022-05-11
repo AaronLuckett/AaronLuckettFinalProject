@@ -23,6 +23,8 @@ Scenario: CorrectDeduction
 	@Purchase
 Scenario: CheckOrderNumber
 	When I add an item to my cart
-	When I Complete the purchase by filling in my correct details
+	When I Complete the purchase by entering these details
+	| firstname | lastname | address              | city  | postcode | phoneNumber   |
+	| Aaron     | Luckett  | 65 Westbridge Street | Derby | DE22 3GG | 07950 888 888 |
 	Then The order number recevied after purachse should match the order number in order history
 

@@ -8,11 +8,11 @@ namespace AaronLuckettFinalProject.Utilities
 {
     public class CustomerData
     {
-        public string firstName = "Aaron";
-        public string lastName = "Luckett";
-        public string address = "65 Westbridge Street";
-        public string postcode = "DE22 3GG";
-        public string city = "Derby";
-        public string phoneNumber = "07950 888 888";
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public string address { get; set; }
+        public string postcode { get; set; }
+        public string city { get; set; }
+        public string phoneNumber { get; set; }
     }
 }

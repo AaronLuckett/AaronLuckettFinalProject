@@ -57,8 +57,7 @@ namespace AaronLuckettFinalProject.Utilities
             MyAccountNav myAccount2 = new MyAccountNav(driver);
             myAccount2.Logout();
 
-            IWebDriver sharedDriver = (IWebDriver)_scenarioContext["webdriver"];
-            sharedDriver.Quit();
+            driver.Quit();
         }
     }
 }

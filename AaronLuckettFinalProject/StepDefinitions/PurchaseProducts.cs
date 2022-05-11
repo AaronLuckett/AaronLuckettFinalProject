@@ -15,7 +15,6 @@ using OpenQA.Selenium.Support.UI;
 using System.Data;
 using static AaronLuckettFinalProject.Utilities.Helper;
 using static AaronLuckettFinalProject.Utilities.Hook;
-using Microsoft.EntityFrameworkCore.Metadata;
 using TechTalk.SpecFlow.Assist;
 
 namespace AaronLuckettFinalProject.StepDefinitions
@@ -111,8 +110,10 @@ namespace AaronLuckettFinalProject.StepDefinitions
             Decimal final = cartNav.GetFinalAmount();
             Decimal calculatedFinal = (delivery + (before - discount));
 
-            Boolean res = (final == calculatedFinal);
-            Assert.That(res, Is.True, "Expected a final value of £" + calculatedFinal + " but got a value of £" + final);
+            //Boolean res = (final == calculatedFinal);
+            //Assert.That(res, Is.True, "Expected a final value of £" + calculatedFinal + " but got a value of £" + final);
+            Assert.That(calculatedFinal, Is.EqualTo(final), 
+                "Expected a final value of £" + calculatedFinal + " but got a value of £" + final);
             Console.WriteLine("Finished test");
         }
 
@@ -162,7 +163,9 @@ namespace AaronLuckettFinalProject.StepDefinitions
             TakesScreenshot(driver as ITakesScreenshot, "OrderNumberTwo");
 
             //Compares the two order numbers
-            Assert.AreEqual(orderNumber, orderNumber2, "Expected " + orderNumber + " to match " + "but other order number was " + orderNumber2);
+            //Assert.AreEqual(orderNumber, orderNumber2, "Expected " + orderNumber + " to match " + "but other order number was " + orderNumber2);
+            Assert.That(orderNumber, Is.EqualTo(orderNumber2), 
+                "Expected " + orderNumber + " to match " + "but other order number was " + orderNumber2);
             Console.WriteLine("Test finished");
         }
     }

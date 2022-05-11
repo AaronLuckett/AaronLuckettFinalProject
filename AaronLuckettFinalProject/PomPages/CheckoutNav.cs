@@ -126,15 +126,15 @@ namespace AaronLuckettFinalProject.PomPages
         public void EnterOrder()
         {
             //Will check for stale error and confirm button is still present
-            IWebElement Place = driver.FindElement(placeOrderLocator);
+            IWebElement place = driver.FindElement(placeOrderLocator);
             try
             {
-                Place.Click();
+                place.Click();
             }
             catch (StaleElementReferenceException e)
             {
                 //If fails find button again and then click on it
-                Place = driver.FindElement(placeOrderLocator);
+                place = driver.FindElement(placeOrderLocator);
                 placeOrder.Click();
             }
         }
@@ -164,15 +164,15 @@ namespace AaronLuckettFinalProject.PomPages
         public void ClickCheckPayments()
         {
             //Will check for stale error and confirm button is still present
-            IWebElement Check = driver.FindElement(checkPaymentsLocator);
+            IWebElement check = driver.FindElement(checkPaymentsLocator);
             try
             {
-                Check.Click();
+                check.Click();
             }
             catch (StaleElementReferenceException e)
             {
                 //If fails find button again and then click on it
-                Check = driver.FindElement(checkPaymentsLocator);
+                check = driver.FindElement(checkPaymentsLocator);
                 checkPayments.Click();
             }
         }

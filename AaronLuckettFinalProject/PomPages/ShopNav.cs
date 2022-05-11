@@ -37,10 +37,6 @@ namespace AaronLuckettFinalProject.PomPages
          */
         public void AddBeltToCart()
         {
-            //Moves to the element and clicks
-            //Actions action = new Actions(driver);
-            //action.MoveToElement(beltButton);
-            //action.Perform();
             beltButton.Click();
         }
 

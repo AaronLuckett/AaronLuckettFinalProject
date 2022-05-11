@@ -40,6 +40,7 @@ namespace AaronLuckettFinalProject.StepDefinitions
             //Login and go to shop
             MyAccountNav myAccount = new MyAccountNav(driver);
             myAccount.Login(Environment.GetEnvironmentVariable("SECRET_USERNAME"), Environment.GetEnvironmentVariable("SECRET_PASSWORD"));
+            Console.WriteLine("I have logged in");
         }
 
 
@@ -48,6 +49,7 @@ namespace AaronLuckettFinalProject.StepDefinitions
         {
             MyAccountNav myAccount = new MyAccountNav(driver);
             myAccount.GoShop();
+            Console.WriteLine("Now on the shop");
         }
 
 
@@ -57,6 +59,7 @@ namespace AaronLuckettFinalProject.StepDefinitions
             //Adds item to cart and goes to basket
             ShopNav shopNav = new ShopNav(driver);
             shopNav.AddBeltToCart();
+            Console.WriteLine("Item added to cart");
         }
 
 
@@ -69,6 +72,7 @@ namespace AaronLuckettFinalProject.StepDefinitions
             //Enters coupon code
             CartNav cartNav = new CartNav(driver);
             cartNav.EnterCoupon(couponName);
+            Console.WriteLine(couponName + " entered");
         }
 
 
@@ -89,6 +93,7 @@ namespace AaronLuckettFinalProject.StepDefinitions
             TakesScreenshot(driver as ITakesScreenshot, "CouponCode");
 
             Assert.That(res, Is.True, "Expected a discount of £" + expectedDiscount + " but actual discount was £" + discount);
+            Console.WriteLine("Test finished");
         }
 
 
@@ -107,7 +112,7 @@ namespace AaronLuckettFinalProject.StepDefinitions
 
             Boolean res = (final == calculatedFinal);
             Assert.That(res, Is.True, "Expected a final value of £" + calculatedFinal + " but got a value of £" + final);
-            Console.WriteLine("Finished Test");
+            Console.WriteLine("Finished test");
         }
 
 
@@ -127,6 +132,7 @@ namespace AaronLuckettFinalProject.StepDefinitions
             //Enter user details
             checkout.EnterUserDetails(_customerData.firstName, _customerData.lastName,
                 _customerData.address, _customerData.city, _customerData.postcode, _customerData.phoneNumber);
+            Console.WriteLine("Customer details entered");
 
             //Click check payments and enter order
             checkout.ClickCheckPayments();
@@ -155,6 +161,7 @@ namespace AaronLuckettFinalProject.StepDefinitions
 
             //Compares the two order numbers
             Assert.AreEqual(orderNumber, orderNumber2, "Expected " + orderNumber + " to match " + "but other order number was " + orderNumber2);
+            Console.WriteLine("Test finished");
         }
     }
 }

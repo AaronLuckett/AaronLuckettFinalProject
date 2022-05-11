@@ -111,9 +111,7 @@ namespace AaronLuckettFinalProject.PomPages
          */
         public void ScrollIntoView()
         {
-            var actions = new Actions(driver);
-            actions.MoveToElement(proceedToCheckout);
-            actions.Perform();
+            ScrollElementIntoView(proceedToCheckout, driver);
         }
 
         /*

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualBasic;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 
 namespace AaronLuckettFinalProject.Utilities
@@ -32,12 +33,24 @@ namespace AaronLuckettFinalProject.Utilities
             String dt = (DateTime.Today.ToString("yyyyMMdd"));
 
             Screenshot screenshot = ssdriver.GetScreenshot();
+
             //Works out the relative path of project and saves in the screenshot folder
             string workingDirectory = Environment.CurrentDirectory;
             string relativePath = (Directory.GetParent(workingDirectory).Parent.Parent.FullName);
             screenshot.SaveAsFile(relativePath + "\\Screenshots\\" + ScreenshotName + dt + ".png", ScreenshotImageFormat.Png);
+            Console.WriteLine(ScreenshotName + dt + " taken and saved to file path " + relativePath);
+        }
 
 
+        /*
+        * Scrolls element into view
+        * Used mainly for screenshots
+        */
+        public static void ScrollElementIntoView(IWebElement element, IWebDriver driver)
+        {
+            var actions = new Actions(driver);
+            actions.MoveToElement(element);
+            actions.Perform();
         }
     }
 }

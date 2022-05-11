@@ -48,9 +48,7 @@ namespace AaronLuckettFinalProject.Utilities
         */
         public static void ScrollElementIntoView(IWebElement element, IWebDriver driver)
         {
-            var actions = new Actions(driver);
-            actions.MoveToElement(element);
-            actions.Perform();
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView();", element);
         }
     }
 }

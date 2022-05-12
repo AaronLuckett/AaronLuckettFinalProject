@@ -5,6 +5,6 @@ customer are the same. The tests can be run in Chrome and Firefox, depending on 
 The run settings file also contains personal details such as login credentials. The tests can be run in the command line, and the specflow living doc 
 plugin produces a html report on the tests that displays the results in a visually pleasing way. A snapshot of this can be seen below.
 
-![image](https://user-images.githubusercontent.com/101340660/168105356-ce219b32-3470-40ac-9364-c687e9e7bd4e.png)
+![image](https://user-images.githubusercontent.com/101340660/168105630-3bf4e7d4-c253-4cf9-a6e1-b6a00aabf043.png)
 
 

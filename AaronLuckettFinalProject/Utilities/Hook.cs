@@ -30,6 +30,7 @@ namespace AaronLuckettFinalProject.Utilities
         public void setup()
         {
             driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
             _scenarioContext["webdriver"] = driver;
             driver.Url = Environment.GetEnvironmentVariable("Website_URL");
 

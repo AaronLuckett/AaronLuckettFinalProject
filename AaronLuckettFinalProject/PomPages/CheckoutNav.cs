@@ -131,11 +131,18 @@ namespace AaronLuckettFinalProject.PomPages
             {
                 place.Click();
             }
-            catch (StaleElementReferenceException e)
+            catch (Exception e)
             {
-                //If fails find button again and then click on it
-                place = driver.FindElement(placeOrderLocator);
-                placeOrder.Click();
+                if(e is StaleElementReferenceException)
+                {
+                    //If fails find button again and then click on it
+                    place = driver.FindElement(placeOrderLocator);
+                    placeOrder.Click();
+                } else if (e is ElementClickInterceptedException)
+                {
+                    Thread.Sleep(800);
+                    placeOrder.Click();
+                }
             }
         }
 
@@ -169,11 +176,18 @@ namespace AaronLuckettFinalProject.PomPages
             {
                 check.Click();
             }
-            catch (StaleElementReferenceException e)
+            catch (Exception e)
             {
-                //If fails find button again and then click on it
-                check = driver.FindElement(checkPaymentsLocator);
-                checkPayments.Click();
+                if(e is StaleElementReferenceException)
+                {
+                    //If fails find button again and then click on it
+                    check = driver.FindElement(checkPaymentsLocator);
+                    checkPayments.Click();
+                } else if (e is ElementClickInterceptedException)
+                {
+                    Thread.Sleep(800);
+                    checkPayments.Click();
+                }
             }
         }
 

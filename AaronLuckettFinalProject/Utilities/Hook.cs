@@ -29,8 +29,17 @@ namespace AaronLuckettFinalProject.Utilities
         [BeforeScenario]
         public void setup()
         {
-            driver = new ChromeDriver();
+            string driverType = Environment.GetEnvironmentVariable("DriverToUse");
+            if(driverType == "chrome")
+            {
+                driver = new ChromeDriver();
+            } else if (driverType == "firefox")
+            {
+                driver = new FirefoxDriver();
+            }
             driver.Manage().Window.Maximize();
+
+            //Context injection
             _scenarioContext["webdriver"] = driver;
             driver.Url = Environment.GetEnvironmentVariable("Website_URL");
 

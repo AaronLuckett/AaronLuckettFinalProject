@@ -133,11 +133,13 @@ namespace AaronLuckettFinalProject.PomPages
             }
             catch (Exception e)
             {
+                //Handle the chrome error
                 if(e is StaleElementReferenceException)
                 {
                     //If fails find button again and then click on it
                     place = driver.FindElement(placeOrderLocator);
                     placeOrder.Click();
+                 //Handle the firefox error
                 } else if (e is ElementClickInterceptedException)
                 {
                     Thread.Sleep(800);
@@ -178,11 +180,13 @@ namespace AaronLuckettFinalProject.PomPages
             }
             catch (Exception e)
             {
+                //Handle the chrome error
                 if(e is StaleElementReferenceException)
                 {
                     //If fails find button again and then click on it
                     check = driver.FindElement(checkPaymentsLocator);
                     checkPayments.Click();
+                //Handle the firefox error
                 } else if (e is ElementClickInterceptedException)
                 {
                     Thread.Sleep(800);

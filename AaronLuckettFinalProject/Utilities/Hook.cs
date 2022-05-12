@@ -29,6 +29,7 @@ namespace AaronLuckettFinalProject.Utilities
         [BeforeScenario]
         public void setup()
         {
+            //Will decide on what browser to open based on string in runsettings file
             string driverType = Environment.GetEnvironmentVariable("DriverToUse");
             if(driverType == "chrome")
             {

@@ -24,9 +24,7 @@ namespace AaronLuckettFinalProject.PomPages
 
         //Locators
         By discountAmountLocator = By.CssSelector(".cart-discount.coupon-edgewords > td > .amount.woocommerce-Price-amount");
-
         By finalAmountLocator = By.CssSelector("strong > .amount.woocommerce-Price-amount");
-
         By removeFromCartLocator = By.CssSelector(".remove");
 
         //Elements
@@ -98,6 +96,7 @@ namespace AaronLuckettFinalProject.PomPages
             proceedToCheckout.Click();
         }
 
+
         /*
          * Method to take user to my account
          */
@@ -106,6 +105,7 @@ namespace AaronLuckettFinalProject.PomPages
             proceedToMyAccount.Click();
         }
 
+
         /*
          * Scrolls prices into view
          */
@@ -113,6 +113,7 @@ namespace AaronLuckettFinalProject.PomPages
         {
             ScrollElementIntoView(proceedToCheckout, driver);
         }
+
 
         /*
          * Method to remove items from cart to get a clean slate

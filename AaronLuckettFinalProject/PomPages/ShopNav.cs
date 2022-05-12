@@ -9,7 +9,7 @@ using static AaronLuckettFinalProject.Utilities.Helper;
 
 namespace AaronLuckettFinalProject.PomPages
 {
-    internal class ShopNav
+    public class ShopNav
     {
         private IWebDriver driver;
 

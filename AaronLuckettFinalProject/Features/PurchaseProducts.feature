@@ -20,7 +20,7 @@ Scenario: CorrectDeduction
 	When I enter the coupon code 'edgewords'
 	Then The final cost should equal the item price minus the discount value
 
-	@Purchase
+@Purchase
 Scenario: CheckOrderNumber
 	When I add an item to my cart
 	When I Complete the purchase by entering these details

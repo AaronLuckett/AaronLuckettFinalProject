@@ -7,7 +7,7 @@ using OpenQA.Selenium;
 
 namespace AaronLuckettFinalProject.PomPages
 {
-    internal class MyAccountNav
+    public class MyAccountNav
     {
         private IWebDriver driver;
 
@@ -68,6 +68,7 @@ namespace AaronLuckettFinalProject.PomPages
             orders.Click();
         }
 
+
         /*
          * Method to logout
          */
@@ -86,6 +87,7 @@ namespace AaronLuckettFinalProject.PomPages
                 logoutButton.Click();
             }
         }
+
 
         /*
          * Method to go to cart

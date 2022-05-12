@@ -14,7 +14,7 @@ namespace AaronLuckettFinalProject.Utilities
 {
     public static class Helper
     {
-        /**
+        /*
          * General method that will apply a wait for a particular element to appear on the page
          */
         public static void WaitForElementToDisplay(By locator, int TimeInSeconds, IWebDriver driver)
@@ -25,7 +25,7 @@ namespace AaronLuckettFinalProject.Utilities
         }
 
 
-        /**
+        /*
          * General method to take a screenshot of the webpage
          */
         public static void TakesScreenshot(ITakesScreenshot ssdriver, String ScreenshotName)

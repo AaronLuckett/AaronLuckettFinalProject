@@ -53,6 +53,7 @@ namespace AaronLuckettFinalProject.PomPages
             EnterPhoneNumber(numberPhone);
         }
 
+
         /*
          * Private method to clear billing details if fields have been auto filled
          */
@@ -65,6 +66,7 @@ namespace AaronLuckettFinalProject.PomPages
             postcode.Clear();
             phoneNumber.Clear();
         }
+
 
         /*
          * Method to input first name
@@ -166,6 +168,7 @@ namespace AaronLuckettFinalProject.PomPages
         {
             myAccount.Click();
         }
+
 
         /*
          * Method to click check payment button

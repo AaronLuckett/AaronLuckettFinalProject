@@ -26,17 +26,18 @@ namespace AaronLuckettFinalProject.PomPages
         By discountAmountLocator = By.CssSelector(".cart-discount.coupon-edgewords > td > .amount.woocommerce-Price-amount");
         By finalAmountLocator = By.CssSelector("strong > .amount.woocommerce-Price-amount");
         By removeFromCartLocator = By.CssSelector(".remove");
+        By myAccountLocator = By.Id("menu-item-46");
 
         //Elements
         IWebElement discount => driver.FindElement(discountAmountLocator);
         IWebElement final => driver.FindElement(finalAmountLocator);
         IWebElement removeFromCart => driver.FindElement(removeFromCartLocator);
+        IWebElement proceedToMyAccount => driver.FindElement(myAccountLocator);
         IWebElement couponEntry => driver.FindElement(By.Id("coupon_code"));
         IWebElement totalAmount => driver.FindElement(By.CssSelector(".cart-subtotal > td > .amount.woocommerce-Price-amount"));
         IWebElement delivry => driver.FindElement(By.CssSelector(".shipping > td > .amount.woocommerce-Price-amount"));
         IWebElement couponEnter => driver.FindElement(By.Name("apply_coupon"));
         IWebElement proceedToCheckout => driver.FindElement(By.LinkText("Proceed to checkout"));
-        IWebElement proceedToMyAccount => driver.FindElement(By.LinkText("My account"));
 
 
         //Methods
@@ -102,7 +103,27 @@ namespace AaronLuckettFinalProject.PomPages
          */
         public void ProceedToMyAccount()
         {
-            proceedToMyAccount.Click();
+            IWebElement myAccount = driver.FindElement(myAccountLocator);
+            try
+            {
+                myAccount.Click();
+            }
+            catch (Exception e)
+            {
+                //Handle the chrome error
+                if (e is StaleElementReferenceException)
+                {
+                    //If fails find button again and then click on it
+                    myAccount = driver.FindElement(myAccountLocator);
+                    proceedToMyAccount.Click();
+                //Handle the firefox error
+                }
+                else if (e is ElementClickInterceptedException)
+                {
+                    Thread.Sleep(800);
+                    proceedToMyAccount.Click();
+                }
+            }
         }
 
 
@@ -123,9 +144,30 @@ namespace AaronLuckettFinalProject.PomPages
             List<IWebElement> elementList = new List<IWebElement>();
             //Add to list if there is an item in the cart
             elementList.AddRange(driver.FindElements(removeFromCartLocator));
-            if (elementList.Count > 0)
+            //Loop through for each item in the cart
+            for (int i = 0; i < elementList.Count; i++)
             {
-                removeFromCart.Click();
+                IWebElement remove = driver.FindElement(removeFromCartLocator);
+                try
+                {
+                    remove.Click();
+                }
+                catch (Exception e)
+                {
+                    //Handle the chrome error
+                    if (e is StaleElementReferenceException)
+                    {
+                        //If fails find button again and then click on it
+                        remove = driver.FindElement(removeFromCartLocator);
+                        removeFromCart.Click();
+                        //Handle the firefox error
+                    }
+                    else if (e is ElementClickInterceptedException)
+                    {
+                        Thread.Sleep(800);
+                        removeFromCart.Click();
+                    }
+                }
             }
         }
     }

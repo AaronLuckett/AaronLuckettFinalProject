@@ -28,7 +28,7 @@ namespace AaronLuckettFinalProject.PomPages
         //Elements
         IWebElement goToCart => driver.FindElement(viewCartLocator);
         IWebElement beltButton => driver.FindElement(By.CssSelector(".has-post-thumbnail.instock.post-28.product.product-type-simple.product_cat-accessories.purchasable.sale.shipping-taxable.status-publish.type-product > .add_to_cart_button.ajax_add_to_cart.button.product_type_simple"));
-
+        IWebElement goToMyAccount => driver.FindElement(By.LinkText("My account"));
 
 
         //Services and Methods

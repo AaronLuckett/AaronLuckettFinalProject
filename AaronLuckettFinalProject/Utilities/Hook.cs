@@ -57,12 +57,13 @@ namespace AaronLuckettFinalProject.Utilities
         public void TearDown()
         {
             //Empty cart if any items inside
-            MyAccountNav myAccount = new MyAccountNav(driver);
-            myAccount.GoToCart();
+            //MyAccountNav myAccount = new MyAccountNav(driver);
+            //myAccount.GoToCart();
 
             //Will remove items from cart
             CartNav cart = new CartNav(driver);
             cart.RemoveAllFromCart();
+            Thread.Sleep(3000);
             cart.ProceedToMyAccount();
 
             //Will logout

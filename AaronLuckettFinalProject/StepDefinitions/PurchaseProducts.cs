@@ -85,14 +85,13 @@ namespace AaronLuckettFinalProject.StepDefinitions
             Decimal discount = cartNav.GetDiscountAmount();
             Decimal before = cartNav.GetTotalBeforeDiscountAmount();
             Decimal expectedDiscount = (Math.Round(before * (Convert.ToDecimal(couponDiscount) / 100),2));
-            Boolean res = (expectedDiscount == discount);
 
             cartNav.ScrollIntoView();
 
             //Take Screenshot
             TakesScreenshot(driver as ITakesScreenshot, "CouponCode");
 
-            Assert.That(res, Is.True, "Expected a discount of £" + expectedDiscount + " but actual discount was £" + discount);
+            Assert.That(discount, Is.EqualTo(expectedDiscount), "Expected a discount of £" + expectedDiscount + " but actual discount was £" + discount);
             Console.WriteLine("Test finished");
         }
 
@@ -111,7 +110,6 @@ namespace AaronLuckettFinalProject.StepDefinitions
             Decimal calculatedFinal = (delivery + (before - discount));
 
             //Boolean res = (final == calculatedFinal);
-            //Assert.That(res, Is.True, "Expected a final value of £" + calculatedFinal + " but got a value of £" + final);
             Assert.That(calculatedFinal, Is.EqualTo(final), 
                 "Expected a final value of £" + calculatedFinal + " but got a value of £" + final);
             Console.WriteLine("Finished test");
@@ -163,7 +161,6 @@ namespace AaronLuckettFinalProject.StepDefinitions
             TakesScreenshot(driver as ITakesScreenshot, "OrderNumberTwo");
 
             //Compares the two order numbers
-            //Assert.AreEqual(orderNumber, orderNumber2, "Expected " + orderNumber + " to match " + "but other order number was " + orderNumber2);
             Assert.That(orderNumber, Is.EqualTo(orderNumber2), 
                 "Expected " + orderNumber + " to match " + "but other order number was " + orderNumber2);
             Console.WriteLine("Test finished");

@@ -56,10 +56,6 @@ namespace AaronLuckettFinalProject.Utilities
         [AfterScenario]
         public void TearDown()
         {
-            //Empty cart if any items inside
-            //MyAccountNav myAccount = new MyAccountNav(driver);
-            //myAccount.GoToCart();
-
             //Will remove items from cart
             CartNav cart = new CartNav(driver);
             cart.RemoveAllFromCart();

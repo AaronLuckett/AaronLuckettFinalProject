@@ -37,7 +37,7 @@ namespace AaronLuckettFinalProject.StepDefinitions
         [Given(@"I have logged in")]
         public void GivenIHaveLoggedIn()
         {
-            //Login and go to shop
+            //Login
             MyAccountNav myAccount = new MyAccountNav(driver);
             myAccount.Login(Environment.GetEnvironmentVariable("SECRET_USERNAME"), Environment.GetEnvironmentVariable("SECRET_PASSWORD"));
             Console.WriteLine("I have logged in");
